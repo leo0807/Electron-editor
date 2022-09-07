@@ -23,20 +23,21 @@
     "lint": "eslint . --ext js,mjs,cjs,ts,mts,cts,vue",
     "typecheck:main": "tsc --noEmit -p packages/main/tsconfig.json",
     "typecheck:preload": "tsc --noEmit -p packages/preload/tsconfig.json",
-    "typecheck:renderer": "vue-tsc --noEmit -p packages/renderer/tsconfig.json",
     "typecheck": "npm run typecheck:main && npm run typecheck:preload && npm run typecheck:renderer",
     "postinstall": "cross-env ELECTRON_RUN_AS_NODE=1 electron scripts/update-electron-vendors.mjs",
     "format": "npx prettier --write \"**/*.{js,mjs,cjs,ts,mts,cts,vue,json}\""
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "5.36.2",
-    "@vitejs/plugin-vue": "3.1.0",
+    "@types/react": "^18.0.18",
+    "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "@typescript-eslint/parser": "^5.36.2",
     "@vue/test-utils": "2.0.2",
     "cross-env": "7.0.3",
     "electron": "20.1.1",
     "electron-builder": "23.3.3",
-    "eslint": "8.23.0",
-    "eslint-plugin-vue": "9.4.0",
+    "eslint": "^8.23.0",
+    "eslint-config-prettier": "^8.5.0",
     "happy-dom": "6.0.4",
     "nano-staged": "0.8.0",
     "playwright": "1.25.1",
@@ -44,11 +45,25 @@
     "typescript": "4.8.2",
     "unplugin-auto-expose": "0.0.3",
     "vite": "3.1.0",
-    "vitest": "0.23.1",
-    "vue-tsc": "0.40.9"
+    "vitest": "0.23.1"
   },
   "dependencies": {
+    "@codemirror/commands": "^6.1.0",
+    "@codemirror/gutter": "^0.19.9",
+    "@codemirror/highlight": "^0.19.8",
+    "@codemirror/history": "^0.19.2",
+    "@codemirror/lang-javascript": "^6.0.2",
+    "@codemirror/language": "^6.2.1",
+    "@codemirror/matchbrackets": "^0.19.4",
+    "@codemirror/state": "^6.1.1",
     "electron-updater": "5.2.1",
-    "vue": "3.2.38"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+    "resolutions": {
+    "@codemirror/highlight": "0.19.7",
+    "@codemirror/lang-javascript": "0.19.7",
+    "@codemirror/state": "0.19.9",
+    "@codemirror/view": "0.19.47"
   }
 }

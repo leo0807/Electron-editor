@@ -1,3 +1,9 @@
+# Techonology Stack
+- Electron
+- React
+- Vite
+- 
+
 # Vite Electron Builder Boilerplate
 
 ----

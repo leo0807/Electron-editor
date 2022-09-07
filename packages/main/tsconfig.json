@@ -13,6 +13,6 @@
       "/@/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*.ts", "../../types/**/*.d.ts"],
+  "include": ["src/**/*.ts", "../../types/**/*.d.ts", "src/index.tsx"],
   "exclude": ["**/*.spec.ts", "**/*.test.ts"]
 }
