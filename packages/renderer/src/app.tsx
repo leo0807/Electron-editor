@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import Editor from './editor'
+import Preview from './preview'
 import './app.css'
 
 const App: React.FC = () => {  
@@ -10,6 +11,7 @@ const App: React.FC = () => {
   return (
     <div className="app">
       <Editor initialDoc={doc} onChange={ handleDocChange } />
+      <Preview doc={ doc } />
     </div>
   )
 }

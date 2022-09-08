@@ -1,8 +1,9 @@
 /* eslint-env node */
 
 import { chrome } from '../../.electron-vendors.cache.json';
+import { builtinModules } from 'module';
 import { join } from 'path';
-import { renderer } from 'unplugin-auto-expose';
+// import { renderer } from 'unplugin-auto-expose';
 
 const PACKAGE_ROOT = __dirname;
 
@@ -31,7 +32,11 @@ const config = {
     assetsDir: '.',
     rollupOptions: {
       input: join(PACKAGE_ROOT, 'index.html'),
+      external: [
+        ...builtinModules.filter(m => m !== 'process' && m !== 'assert'),
+      ],
     },
+
     emptyOutDir: true,
     reportCompressedSize: false,
   },
@@ -39,9 +44,9 @@ const config = {
     environment: 'happy-dom',
   },
   plugins: [
-    renderer.vite({
-      preloadEntry: join(PACKAGE_ROOT, '../preload/src/index.ts'),
-    }),
+    // renderer.vite({
+    //   preloadEntry: join(PACKAGE_ROOT, '../preload/src/index.ts'),
+    // }),
   ],
 };
 
