@@ -1,8 +1,8 @@
 /* eslint-env node */
 
-import { chrome } from '../../.electron-vendors.cache.json';
-import { builtinModules } from 'module';
-import { join } from 'path';
+import {chrome} from '../../.electron-vendors.cache.json';
+import {builtinModules} from 'module';
+import {join} from 'path';
 // import { renderer } from 'unplugin-auto-expose';
 
 const PACKAGE_ROOT = __dirname;
@@ -32,9 +32,7 @@ const config = {
     assetsDir: '.',
     rollupOptions: {
       input: join(PACKAGE_ROOT, 'index.html'),
-      external: [
-        ...builtinModules.filter(m => m !== 'process' && m !== 'assert'),
-      ],
+      external: [...builtinModules.filter(m => m !== 'process' && m !== 'assert')],
     },
 
     emptyOutDir: true,
