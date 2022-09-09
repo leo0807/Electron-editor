@@ -1,17 +1,18 @@
-import { language } from "@codemirror/language";
-import React, { useEffect, useState } from "react";
-import runmode, { getLanguage } from "./runmode";
+import React, { useEffect, useState } from 'react'
+import runmode, { getLanguage } from './runmode'
 
 type Tokens = {
   text: string,
   style: string | null
 }[]
 
-const RemarkCode: React.FC<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>>> = props => {
+const RemarkCode: React.FC<
+  React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>
+> = props => {
   const [spans, setSpans] = useState<Tokens>([])
   const { className } = props
   const langName = (className || '').substr(9)
-  
+
   useEffect(() => {
     getLanguage(langName).then(language => {
       if (language) {
@@ -21,20 +22,28 @@ const RemarkCode: React.FC<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElem
           body as string,
           language,
           (text: string, style: string | null, _from: number, _to: number) => {
-            tokens.push({text, style})
+            tokens.push({ text, style })
           }
         )
         setSpans(tokens)
       }
     })
-  }, [])
+  }, [props.children])
 
   if (spans.length > 0) {
-    return ()
-  } else {
     return (
-      <code>{ props.children }</code>
+      <code>
+        {spans.map((span, i) => (
+          <span key={i} className={span.style || ''}>
+            {span.text}
+          </span>
+        ))}
+      </code>
     )
+  } else {
+
+    return <code>{props.children}</code>
   }
 }
+
 export default RemarkCode
